@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" 
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.yagi.socialanalyzer.ui.controllers.ProjectListController"
+      spacing="10" styleClass="project-list">
+    
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    
+    <!-- Toolbar -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="%button.new" onAction="#handleNewProject" styleClass="primary"/>
+        <Button text="%button.edit" onAction="#handleEditProject" fx:id="editButton" disable="true"/>
+        <Button text="%button.delete" onAction="#handleDeleteProject" fx:id="deleteButton" 
+                disable="true" styleClass="danger"/>
+        <Separator orientation="VERTICAL"/>
+        <Button text="%project.list.startCollection" onAction="#handleStartCollection" 
+                styleClass="primary" disable="true" fx:id="startCollectionButton"/>
+        <Button text="%project.list.viewData" onAction="#handleViewData" 
+                disable="true" fx:id="viewDataButton"/>
+    <Region HBox.hgrow="ALWAYS"/>
+    <TextField fx:id="searchField" promptText="%project.list.search" prefWidth="200"/>
+    <Button text="%button.manageCredentials" onAction="#handleManageCredentials" />
+    <Button text="%button.refresh" onAction="#handleRefresh"/>
+    </HBox>
+    
+    <!-- Project Table -->
+    <TableView fx:id="projectTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="nameColumn" text="%project.list.name" prefWidth="200"/>
+            <TableColumn fx:id="disasterColumn" text="%project.list.disaster" prefWidth="180"/>
+            <TableColumn fx:id="regionColumn" text="%project.list.region" prefWidth="120"/>
+            <TableColumn fx:id="dateRangeColumn" text="%project.list.dateRange" prefWidth="150"/>
+            <TableColumn fx:id="statusColumn" text="%project.list.status" prefWidth="100"/>
+            <TableColumn fx:id="postsColumn" text="%project.list.posts" prefWidth="80"/>
+            <TableColumn fx:id="createdColumn" text="%project.list.created" prefWidth="150"/>
+        </columns>
+        <placeholder>
+            <Label text="%project.list.empty"/>
+        </placeholder>
+    </TableView>
+    
+    <!-- Status Bar -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label fx:id="statusLabel" text="Ready"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="countLabel" text=""/>
+    </HBox>
+    
+</VBox>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" 
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.yagi.socialanalyzer.ui.controllers.DataCollectionController"
+      spacing="15" styleClass="collection-view">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    
+    <!-- Header -->
+    <VBox spacing="5">
+        <Label fx:id="projectNameLabel" styleClass="title"/>
+        <Label fx:id="projectInfoLabel" styleClass="subtitle"/>
+    </VBox>
+    
+    <Separator/>
+    
+    <!-- Overall Progress -->
+    <VBox spacing="10">
+        <Label text="%collection.overall" styleClass="subtitle"/>
+        <ProgressBar fx:id="overallProgressBar" prefWidth="Infinity" progress="0"/>
+        <Label fx:id="overallStatusLabel" text="Ready to collect"/>
+    </VBox>
+    
+    <Separator/>
+    
+    <!-- Platform Progress -->
+    <VBox spacing="10" VBox.vgrow="ALWAYS">
+        <Label text="%collection.platforms" styleClass="subtitle"/>
+        
+        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+            <VBox fx:id="platformProgressContainer" spacing="15">
+                <padding>
+                    <Insets top="5" right="5" bottom="5" left="5"/>
+                </padding>
+            </VBox>
+        </ScrollPane>
+    </VBox>
+    
+    <Separator/>
+    
+    <!-- Statistics -->
+    <GridPane hgap="20" vgap="10">
+        <Label text="%collection.stats.total" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Label fx:id="totalPostsLabel" text="0" styleClass="stat-value" 
+               GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        
+        <Label text="%collection.stats.elapsed" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Label fx:id="elapsedTimeLabel" text="00:00:00" styleClass="stat-value" 
+               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        
+        <Label text="%collection.stats.rate" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Label fx:id="collectionRateLabel" text="0 posts/min" styleClass="stat-value" 
+               GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    </GridPane>
+    
+    <Separator/>
+    
+    <!-- Action Buttons -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="startButton" text="%button.start" onAction="#handleStart" 
+                styleClass="primary" prefWidth="120"/>
+        <Button fx:id="pauseButton" text="%button.pause" onAction="#handlePause" 
+                disable="true" prefWidth="120"/>
+        <Button fx:id="resumeButton" text="%button.resume" onAction="#handleResume" 
+                disable="true" prefWidth="120"/>
+        <Button fx:id="stopButton" text="%button.stop" onAction="#handleStop" 
+                disable="true" styleClass="danger" prefWidth="120"/>
+    </HBox>
+    
+</VBox>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.yagi.socialanalyzer.ui.controllers.ProjectConfigController"
+            prefWidth="600" prefHeight="700">
+    
+    <content>
+        <VBox spacing="15" styleClass="config-form">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <!-- Project Name -->
+            <VBox spacing="5">
+                <Label text="%project.config.name" styleClass="field-label"/>
+                <TextField fx:id="projectNameField" promptText="%project.config.name.prompt"/>
+                <Label fx:id="nameErrorLabel" styleClass="error" managed="false" visible="false"/>
+            </VBox>
+            
+            <!-- Disaster Name -->
+            <VBox spacing="5">
+                <Label text="%project.config.disaster" styleClass="field-label"/>
+                <TextField fx:id="disasterNameField" promptText="%project.config.disaster.prompt"/>
+                <Label fx:id="disasterErrorLabel" styleClass="error" managed="false" visible="false"/>
+            </VBox>
+            
+            <!-- Region -->
+            <VBox spacing="5">
+                <Label text="%project.config.region" styleClass="field-label"/>
+                <TextField fx:id="regionField" promptText="%project.config.region.prompt"/>
+                <Label fx:id="regionErrorLabel" styleClass="error" managed="false" visible="false"/>
+            </VBox>
+            
+            <!-- Date Range -->
+            <HBox spacing="10">
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="%project.config.startDate" styleClass="field-label"/>
+                    <DatePicker fx:id="startDatePicker" maxWidth="Infinity"/>
+                </VBox>
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="%project.config.endDate" styleClass="field-label"/>
+                    <DatePicker fx:id="endDatePicker" maxWidth="Infinity"/>
+                </VBox>
+            </HBox>
+            <Label fx:id="dateErrorLabel" styleClass="error" managed="false" visible="false"/>
+            
+            <!-- Keywords -->
+            <VBox spacing="5" VBox.vgrow="ALWAYS">
+                <Label text="%project.config.keywords" styleClass="field-label"/>
+                <TextArea fx:id="keywordsArea" 
+                         promptText="%project.config.keywords.prompt"
+                         prefRowCount="4"
+                         wrapText="true"/>
+                <Label text="%project.config.keywords.hint" styleClass="hint"/>
+                <Label fx:id="keywordsErrorLabel" styleClass="error" managed="false" visible="false"/>
+            </VBox>
+            
+            <!-- Data Sources -->
+            <VBox spacing="5">
+                <Label text="%project.config.sources" styleClass="field-label"/>
+                <GridPane hgap="15" vgap="10">
+                    <CheckBox fx:id="twitterCheckBox" text="Twitter" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <CheckBox fx:id="redditCheckBox" text="Reddit" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <CheckBox fx:id="youtubeCheckBox" text="YouTube" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <CheckBox fx:id="facebookCheckBox" text="Facebook" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <CheckBox fx:id="tiktokCheckBox" text="TikTok" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <CheckBox fx:id="googleCheckBox" text="Google" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                </GridPane>
+                <Label fx:id="sourcesErrorLabel" styleClass="error" managed="false" visible="false"/>
+            </VBox>
+            
+        </VBox>
+    </content>
+    
+    <buttonTypes>
+        <ButtonType fx:id="saveButtonType" text="%button.save" buttonData="OK_DONE"/>
+        <ButtonType fx:id="cancelButtonType" text="%button.cancel" buttonData="CANCEL_CLOSE"/>
+    </buttonTypes>
+    
+</DialogPane>

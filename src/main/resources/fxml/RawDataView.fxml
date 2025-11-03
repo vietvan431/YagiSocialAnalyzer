@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" 
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.yagi.socialanalyzer.ui.controllers.RawDataController"
+      spacing="10" styleClass="raw-data-view">
+    
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    
+    <!-- Filters -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="%rawdata.filter"/>
+        <TextField fx:id="searchField" promptText="%rawdata.search" prefWidth="200"/>
+        <ComboBox fx:id="platformFilter" promptText="%rawdata.platform" prefWidth="150"/>
+        <DatePicker fx:id="dateFilter" promptText="%rawdata.date"/>
+        <Button text="%button.clear" onAction="#handleClearFilters"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="%button.export" onAction="#handleExport"/>
+    </HBox>
+    
+    <!-- Data Table -->
+    <TableView fx:id="postsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="platformColumn" text="%rawdata.column.platform" prefWidth="80"/>
+            <TableColumn fx:id="postIdColumn" text="%rawdata.column.postId" prefWidth="120"/>
+            <TableColumn fx:id="authorColumn" text="%rawdata.column.author" prefWidth="120"/>
+            <TableColumn fx:id="contentColumn" text="%rawdata.column.content" prefWidth="300"/>
+            <TableColumn fx:id="publishedColumn" text="%rawdata.column.published" prefWidth="150"/>
+            <TableColumn fx:id="likesColumn" text="%rawdata.column.likes" prefWidth="70"/>
+            <TableColumn fx:id="sharesColumn" text="%rawdata.column.shares" prefWidth="70"/>
+            <TableColumn fx:id="commentsColumn" text="%rawdata.column.comments" prefWidth="80"/>
+            <TableColumn fx:id="viewsColumn" text="%rawdata.column.views" prefWidth="80"/>
+        </columns>
+        <placeholder>
+            <Label text="%rawdata.empty"/>
+        </placeholder>
+    </TableView>
+    
+    <!-- Status Bar -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label fx:id="statusLabel" text="Ready"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="countLabel" text=""/>
+    </HBox>
+    
+</VBox>

@@ -1,0 +1,78 @@
+# Social Media Platform Configurations
+# This file defines data source configurations for social media platforms
+
+platforms:
+  - id: twitter
+    name: "Twitter/X"
+    type: API
+    baseUrl: "https://api.twitter.com/2"
+    authType: OAUTH2
+    rateLimit: 180
+    rateLimitWindow: PT15M  # 15 minutes
+    enabled: true
+    configParams:
+      searchEndpoint: "/tweets/search/recent"
+      maxResults: 100
+      
+  - id: reddit
+    name: "Reddit"
+    type: API
+    baseUrl: "https://oauth.reddit.com"
+    authType: OAUTH2
+    rateLimit: 60
+    rateLimitWindow: PT1M  # 1 minute
+    enabled: true
+    configParams:
+      searchEndpoint: "/search"
+      limit: 100
+      
+  - id: youtube
+    name: "YouTube"
+    type: API
+    baseUrl: "https://www.googleapis.com/youtube/v3"
+    authType: API_KEY
+    rateLimit: 10000
+    rateLimitWindow: PT24H  # 24 hours (quota units)
+    enabled: true
+    configParams:
+      searchEndpoint: "/search"
+      maxResults: 50
+      
+  - id: facebook
+    name: "Facebook"
+    type: SELENIUM
+    baseUrl: "https://www.facebook.com"
+    authType: SESSION_LOGIN
+    rateLimit: 20
+    rateLimitWindow: PT1H  # 1 hour
+    enabled: true
+    configParams:
+      searchUrl: "/search/posts"
+      waitTimeout: 10
+      scrollPause: 2
+      
+  - id: tiktok
+    name: "TikTok"
+    type: SELENIUM
+    baseUrl: "https://www.tiktok.com"
+    authType: NONE
+    rateLimit: 30
+    rateLimitWindow: PT1H  # 1 hour
+    enabled: true
+    configParams:
+      searchUrl: "/search"
+      waitTimeout: 10
+      scrollPause: 2
+      
+  - id: google
+    name: "Google Search"
+    type: SELENIUM
+    baseUrl: "https://www.google.com"
+    authType: NONE
+    rateLimit: 100
+    rateLimitWindow: PT1H  # 1 hour
+    enabled: true
+    configParams:
+      searchUrl: "/search"
+      waitTimeout: 5
+      resultSelector: "div.g"
